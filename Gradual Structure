@@ -1,0 +1,44 @@
+gradual-agent/
+├── .github/
+│   └── workflows/
+│       └── ci.yml          # GitHub Actions CI pipeline
+├── agents/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── base_agent.py   # Abstract agent class
+│   │   └── agent_registry.py # Agent discovery
+│   ├── security/
+│   │   ├── zkp_prover.py   # Zero-Knowledge Proofs
+│   │   └── crypto_utils.py # Cryptographic operations
+│   ├── quant/
+│   │   ├── strategy_engine.py # Trading strategies
+│   │   └── risk_manager.py
+│   └── comms/
+│       ├── grpc_server.py  # gRPC interface
+│       └── message_broker.py # Pub/sub system
+├── services/
+│   ├── orchestration/
+│   │   ├── ray_cluster.py  # Ray integration
+│   │   └── task_scheduler.py
+│   └── monitoring/
+│       ├── prometheus_exporter.py
+│       └── audit_logger.py
+├── lib/
+│   ├── federated/
+│   │   ├── fl_trainer.py   # Federated learning
+│   │   └── model_aggregator.py
+│   └── blockchain/
+│       ├── smart_contracts/
+│       └── tx_validator.py
+├── config/
+│   ├── defaults.yaml       # Base configuration
+│   └── dev.yaml            # Environment-specific
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── docs/
+│   ├── ARCHITECTURE.md
+│   └── API_REFERENCE.md
+├── requirements.txt
+├── setup.py
+└── .env.template           # Environment variables
