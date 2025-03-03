@@ -1,0 +1,135 @@
+# Gradual AGENT - Central Configuration
+# Version: 1.3.0
+
+core:
+  environment: "production"  # [development|staging|production]
+  log_level: "INFO"         # [DEBUG|INFO|WARNING|ERROR|CRITICAL]
+  timezone: "UTC"           # System timezone
+  max_workers: 100          # Global thread pool size
+
+network:
+  grpc:
+    host: "0.0.0.0"
+    port: 50051
+    max_workers: 10
+    ssl_enabled: true
+    ssl_cert: "/etc/ssl/certs/gradual.crt"
+    ssl_key: "/etc/ssl/private/gradual.key"
+    max_message_size: 10485760  # 10MB
+
+  rest:
+    enabled: false
+    host: "127.0.0.1"
+    port: 8080
+    cors_origins: ["*"]
+
+agents:
+  registry:
+    heartbeat_interval: 30      # Seconds
+    failure_threshold: 3
+    discovery_interval: 300     # Service discovery interval
+    load_balancing: "round_robin" # [round_robin|least_conn|random]
+
+  security:
+    zkp:
+      protocol: "groth16"       # [groth16|plonk|marlin]
+      curve: "bls12_381"        # Elliptic curve selection
+      trusted_setup: "/etc/zkp/trusted_setup.ptau"
+      proof_timeout: 30000      # Milliseconds
+
+security:
+  auth:
+    jwt_secret: "CHANGE_ME_IN_PRODUCTION"
+    token_expiry: 3600          # Seconds
+    algorithm: "HS256"          # JWT algorithm
+
+  crypto:
+    key_derivation:
+      iterations: 100000
+      salt_size: 32             # Bytes
+      algorithm: "argon2id"     # [pbkdf2|bcrypt|argon2id]
+
+  firewall:
+    rate_limit: 1000            # Requests per minute
+    ip_whitelist: []
+    ip_blacklist: []
+
+cluster:
+  ray:
+    address: "auto"             # Cluster address
+    redis_password: ""
+    num_cpus: 8
+    num_gpus: 0
+    autoscaling:
+      min_workers: 1
+      max_workers: 10
+      target_utilization: 70    # Percentage
+
+  kubernetes:
+    enabled: false
+    namespace: "gradual"
+    image: "gradualagent:latest"
+
+storage:
+  time_series:
+    retention: 30               # Days
+    resolution: "1m"            # [1s|1m|1h|1d]
+    compression: "zstd"          # [none|zstd|lz4]
+
+  audit_logs:
+    path: "/var/log/gradual/audit"
+    rotation: "weekly"          # [daily|weekly|monthly]
+    encryption_key: ""           # AES-256-GCM key (base64)
+
+monitoring:
+  prometheus:
+    port: 9090
+    scrape_interval: 15s
+    metrics_prefix: "gradual_"
+
+  health_check:
+    interval: 30s
+    timeout: 5s
+
+strategies:
+  quant:
+    backtest:
+      initial_balance: 1000000.0
+      commission: 0.0005        # 0.05%
+      slippage: 0.001           # 0.1%
+
+  risk:
+    max_drawdown: 0.20          # 20%
+    var_conf_level: 0.95        # 95% confidence
+    margin_call_threshold: 0.85
+
+  fl:
+    aggregation_interval: 300   # Seconds
+    differential_privacy:
+      epsilon: 3.0
+      delta: 1e-5
+    model_encryption: "homomorphic" # [none|homomorphic|sgx]
+
+compliance:
+  gdpr:
+    data_retention: 730         # Days
+    right_to_be_forgotten: true
+
+  sec:
+    trade_archival: 7           # Years
+    audit_trail_encryption: true
+
+backup:
+  enabled: true
+  schedule: "0 0 * * *"         # Cron syntax
+  cloud_storage:
+    provider: ""                # [aws|gcp|azure]
+    bucket: ""
+    path: "backups/"
+
+# --- Experimental Features ---
+experimental:
+  quantum_resistance: false
+  ai_governance:
+    enabled: false
+    model_bias_threshold: 0.01
