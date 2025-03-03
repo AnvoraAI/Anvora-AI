@@ -1,0 +1,135 @@
+# Gradual AGENT - Development Configuration
+# Overrides defaults.yaml for local/dev environments
+
+core:
+  environment: "development"
+  log_level: "DEBUG"
+  timezone: "UTC"
+  max_workers: 4  # Reduce for local testing
+
+network:
+  grpc:
+    host: "127.0.0.1"
+    port: 50051
+    ssl_enabled: false  # Disable TLS for local testing
+    max_message_size: 4194304  # 4MB
+
+  rest:
+    enabled: true
+    cors_origins: ["http://localhost:3000", "http://127.0.0.1:*"]
+
+agents:
+  registry:
+    heartbeat_interval: 60  # Longer intervals for debugging
+    failure_threshold: 1    # Faster failure detection
+    load_balancing: "random"
+
+  security:
+    zkp:
+      protocol: "mock"      # Use mock proofs in dev
+      trusted_setup: "file:./dev/zkp_setup.json"
+
+security:
+  auth:
+    jwt_secret: "DEV_SECRET_INSECURE"
+    token_expiry: 86400      # 24 hours for debugging
+
+  crypto:
+    key_derivation:
+      iterations: 1000      # Faster hashing
+      algorithm: "pbkdf2"
+
+  firewall:
+    rate_limit: 10000       # Higher limit for testing
+    ip_whitelist: ["0.0.0.0/0"]
+
+cluster:
+  ray:
+    address: "local"        # Start local cluster
+    num_cpus: 2
+    autoscaling:
+      min_workers: 0
+      max_workers: 2
+
+  kubernetes:
+    enabled: false
+
+storage:
+  time_series:
+    retention: 7            # 1 week retention
+    path: "/tmp/gradual_data"
+    compression: "none"
+
+  audit_logs:
+    path: "/tmp/gradual_audit"
+    encryption_key: ""       # Disable encryption
+
+monitoring:
+  prometheus:
+    port: 9090
+    scrape_interval: 60s    # Less frequent scraping
+
+  health_check:
+    interval: 60s
+
+strategies:
+  quant:
+    backtest:
+      initial_balance: 10000.0
+      commission: 0.0       # No fees in dev
+
+  risk:
+    max_drawdown: 1.0       # Disable risk limits
+    var_conf_level: 0.90
+
+  fl:
+    aggregation_interval: 60
+    differential_privacy:
+      epsilon: 10.0         # Weaker privacy
+    model_encryption: "none"
+
+compliance:
+  gdpr:
+    right_to_be_forgotten: false
+
+  sec:
+    audit_trail_encryption: false
+
+backup:
+  enabled: false
+
+experimental:
+  quantum_resistance: true   # Enable experimental features
+  ai_governance:
+    enabled: true
+
+# --- Development Tools ---
+dev_tools:
+  mock_data:
+    enabled: true
+    asset_count: 100
+    trade_events_per_second: 10
+
+  debug_endpoints:
+    enabled: true
+    port: 6060
+
+  profiling:
+    pyinstrument:
+      enabled: true
+    memory_profiler: true
+
+  testnet:
+    blockchain: "ganache"
+    rpc_url: "http://localhost:8545"
+    chain_id: 1337
+
+  ide:
+    hot_reload: true
+    breakpoints_enabled: true
+    test_coverage:
+      threshold: 80
+
+  ci:
+    parallel_tests: 2
+    fail_fast: true
