@@ -121,7 +121,7 @@ graph TD
 ### Installation
 ```
 # 1. Clone repo
-git clone https://github.com/yourorg/gradual-agent.git
+git clone https://github.com/yourorg/Anvora-AI.git
 
 # 2. Install dependencies
 poetry install --with dev,docs
@@ -130,15 +130,15 @@ poetry install --with dev,docs
 ray start --head --port=6379
 
 # 4. Run main service
-python -m gradual_agent.main --config config/prod.yaml
+python -m Anvora_AI.main --config config/prod.yaml
 ```
 
 ### Docker Deployment
 ```
 # docker-compose.prod.yaml
 services:
-  gradual-agent:
-    image: yourorg/gradual-agent:2.3.0
+  Anvora-AI:
+    image: yourorg/Anvora-AI:2.3.0
     environment:
       - RAY_ADDRESS=ray-head:6379
     deploy:
@@ -173,7 +173,7 @@ class TradeAgent(AgentBase):
 ## 🧩 Modules
 ### Security Subsystem
 ```
-from gradual_agent.security.zkp_prover import ZKProver
+from Anvora-AI.security.zkp_prover import ZKProver
 
 prover = ZKProver(protocol="groth16")
 proof = prover.generate_proof(
@@ -198,7 +198,7 @@ python -m gradual_agent.fl.train \
 git checkout -b feature/awesome-thing
 
 # 2. Run tests
-pytest tests/ --cov=gradual_agent
+pytest tests/ --cov=Anvora_AI
 
 # 3. Submit PR
 gh pr create --base main --title "Add awesome thing"
