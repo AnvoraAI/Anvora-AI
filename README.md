@@ -1,4 +1,4 @@
-# Gradual AGENT - Next-Gen AI Asset Management Platform
+# Anvora AI - Next-Gen AI Asset Management Platform
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
@@ -7,30 +7,23 @@
 
 **Gradual AGENT** is an open-source multi-agent framework for intelligent asset management, combining real-time security protocols, quantitative trading strategies, and decentralized AI decision-making.
 
-## WEB: https://gradual.world/
-[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/GradualAGENT)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/george-samwick-a05b1218a/)
+## WEB: (https://anvoraai.com/)
+[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/AnvoraAI)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alexprokofiev/)
 
 ```
 
-                                                                                                                        
-                                                                    dddddddd                                            
-        GGGGGGGGGGGGG                                               d::::::d                                    lllllll 
-     GGG::::::::::::G                                               d::::::d                                    l:::::l 
-   GG:::::::::::::::G                                               d::::::d                                    l:::::l 
-  G:::::GGGGGGGG::::G                                               d:::::d                                     l:::::l 
- G:::::G       GGGGGGrrrrr   rrrrrrrrr   aaaaaaaaaaaaa      ddddddddd:::::d uuuuuu    uuuuuu    aaaaaaaaaaaaa    l::::l 
-G:::::G              r::::rrr:::::::::r  a::::::::::::a   dd::::::::::::::d u::::u    u::::u    a::::::::::::a   l::::l 
-G:::::G              r:::::::::::::::::r aaaaaaaaa:::::a d::::::::::::::::d u::::u    u::::u    aaaaaaaaa:::::a  l::::l 
-G:::::G    GGGGGGGGGGrr::::::rrrrr::::::r         a::::ad:::::::ddddd:::::d u::::u    u::::u             a::::a  l::::l 
-G:::::G    G::::::::G r:::::r     r:::::r  aaaaaaa:::::ad::::::d    d:::::d u::::u    u::::u      aaaaaaa:::::a  l::::l 
-G:::::G    GGGGG::::G r:::::r     rrrrrrraa::::::::::::ad:::::d     d:::::d u::::u    u::::u    aa::::::::::::a  l::::l 
-G:::::G        G::::G r:::::r           a::::aaaa::::::ad:::::d     d:::::d u::::u    u::::u   a::::aaaa::::::a  l::::l 
- G:::::G       G::::G r:::::r          a::::a    a:::::ad:::::d     d:::::d u:::::uuuu:::::u  a::::a    a:::::a  l::::l 
-  G:::::GGGGGGGG::::G r:::::r          a::::a    a:::::ad::::::ddddd::::::ddu:::::::::::::::uua::::a    a:::::a l::::::l
-   GG:::::::::::::::G r:::::r          a:::::aaaa::::::a d:::::::::::::::::d u:::::::::::::::ua:::::aaaa::::::a l::::::l
-     GGG::::::GGG:::G r:::::r           a::::::::::aa:::a d:::::::::ddd::::d  uu::::::::uu:::u a::::::::::aa:::al::::::l
-        GGGGGG   GGGG rrrrrrr            aaaaaaaaaa  aaaa  ddddddddd   ddddd    uuuuuuuu  uuuu  aaaaaaaaaa  aaaallllllll
+                                                                                                                                                            
+         .8.          b.             8 `8.`888b           ,8'  ,o888888o.     8 888888888o.            .8.                             .8.           8 8888 
+        .888.         888o.          8  `8.`888b         ,8'. 8888     `88.   8 8888    `88.          .888.                           .888.          8 8888 
+       :88888.        Y88888o.       8   `8.`888b       ,8',8 8888       `8b  8 8888     `88         :88888.                         :88888.         8 8888 
+      . `88888.       .`Y888888o.    8    `8.`888b     ,8' 88 8888        `8b 8 8888     ,88        . `88888.                       . `88888.        8 8888 
+     .8. `88888.      8o. `Y888888o. 8     `8.`888b   ,8'  88 8888         88 8 8888.   ,88'       .8. `88888.                     .8. `88888.       8 8888 
+    .8`8. `88888.     8`Y8o. `Y88888o8      `8.`888b ,8'   88 8888         88 8 888888888P'       .8`8. `88888.                   .8`8. `88888.      8 8888 
+   .8' `8. `88888.    8   `Y8o. `Y8888       `8.`888b8'    88 8888        ,8P 8 8888`8b          .8' `8. `88888.                 .8' `8. `88888.     8 8888 
+  .8'   `8. `88888.   8      `Y8o. `Y8        `8.`888'     `8 8888       ,8P  8 8888 `8b.       .8'   `8. `88888.               .8'   `8. `88888.    8 8888 
+ .888888888. `88888.  8         `Y8o.`         `8.`8'       ` 8888     ,88'   8 8888   `8b.    .888888888. `88888.             .888888888. `88888.   8 8888 
+.8'       `8. `88888. 8            `Yo          `8.`           `8888888P'     8 8888     `88. .8'       `8. `88888.           .8'       `8. `88888.  8 8888 
 
 ```
 
@@ -39,38 +32,8 @@ G:::::G        G::::G r:::::r           a::::aaaa::::::ad:::::d     d:::::d u:::
 
 
 ---
-## Deployment Architecture
-```mermaid
-%% File: docs/diagrams/deployment_arch.mmd
-graph TB
-    subgraph Cloud[AWS/GCP Region]
-        subgraph K8s[Kubernetes Cluster]
-            A[Ray Head Node] --> B[Ray Worker Pods]
-            C[gRPC Gateway] -->|LB| A
-            D[Redis Cluster] --> A
-        end
-        E[REST API] --> C
-        F[Web UI] --> E
-    end
-    G[HSM Vault] -.->|TLS 1.3| A
-    H[External Exchanges] -->|WebSocket| C
 
-```
-## Multi-Agent Orchestration
-```mermaid
-%% File: docs/diagrams/agent_orchestration.mmd
-flowchart TD
-    A[Market Data Feed] --> B(TradeAgent)
-    B --> C{RiskAgent}
-    C -->|Approved| D[OrderManager]
-    C -->|Rejected| E[AlertSystem]
-    D --> F((Blockchain Settlement))
-    F --> G[AuditLogger]
-    G --> H{MonitorAgent}
-    H -->|Anomaly| I[AutoRollback]
-    H -->|Normal| J[Portfolio Update]
 
-```
 ## Security Validation Flow
 ```mermaid
 %% File: docs/diagrams/security_validation.mmd
