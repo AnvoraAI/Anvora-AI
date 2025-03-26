@@ -5,7 +5,7 @@
 [![Ray](https://img.shields.io/badge/Ray-2.5.1%2B-orange)](https://www.ray.io/)
 [![Coverage](https://img.shields.io/badge/Coverage-92%25-green)](https://github.com/yourorg/gradual-agent/actions)
 
-**Gradual AGENT** is an open-source multi-agent framework for intelligent asset management, combining real-time security protocols, quantitative trading strategies, and decentralized AI decision-making.
+**Anvora AI** is an open-source multi-agent framework for intelligent asset management, combining real-time security protocols, quantitative trading strategies, and decentralized AI decision-making.
 
 ## WEB: (https://anvoraai.com/)
 [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/AnvoraAI)
